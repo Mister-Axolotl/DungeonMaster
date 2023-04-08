@@ -2,59 +2,34 @@ import { Monster } from "./monster.js";
 
 export class WitherBoss extends Monster{
     
-    static linkToImg;
+    static linkToImg = "../images/";
     static variousColor;
-    static numberMax;
+    static numberMax = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
     
-    constructor(nom, degats, defense, pointDeVie, images, target){
-        super(nom, degats, defense, pointDeVie, images, target);
+    constructor(nom, degats, defense, pointDeVie, image, target){
+        super(nom, degats, defense, pointDeVie, image, target);
+        this.setImage();
+        this.spawnWithStuff();
     }
 
-    get nom() {
-        return this.nom;
+    get numberMax() {
+        return WitherBoss.numberMax;
     }
 
-    set nom(value) {
-        this.nom = value;
+    setImage() {
+        var testBoss = document.querySelector("#testBoss");
+        let source = `${WitherBoss.linkToImg}${this.image}.png`;
+        testBoss.src = source; // temporaire
     }
 
-    get degats() {
-        return this.degats;
-    }
-
-    set degats(value) {
-        this.degats = value;
-    }
-
-    get defense() {
-        return this.defense;
-    }
-
-    set defense(value) {
-        this.defense = value;
-    }
-
-    get pointDeVie() {
-        return this.pointDeVie;
-    }
-
-    set pointDeVie(value) {
-        this.pointDeVie = value;
-    }
-
-    get images() {
-        return this.images;
-    }
-
-    set images(value) {
-        this.images = value;
-    }
-
-    get target() {
-        return this.target;
-    }
-
-    set target(value) {
-        this.target = value;
+    spawnWithStuff() {
+        if(WitherBoss.numberMax === 1) {
+            let potionOrWeapon = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+            if(potionOrWeapon === 1 ) {
+                return "potion";
+            } else { 
+                return "weapon";
+            }
+        } else return "potion and weapon";
     }
 }

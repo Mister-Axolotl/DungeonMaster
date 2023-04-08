@@ -1,0 +1,20 @@
+* {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+body {
+    background: radial-gradient(circle, rgba(0,85,254,1) 0%, rgba(48,73,130,1) 73%);
+    text-align: center;
+}
+
+#images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+}
+
+#images img {
+    max-width: 100%;
+    height: auto;
+}

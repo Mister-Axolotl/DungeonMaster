@@ -15,19 +15,13 @@ export class Hero {
     static maxPointDeVie = 100;
 
     constructor(nom, prenom, force, defense, pointDeVie, sacDePotions, sacDArmes) {
-        this.nom = nom,
-        this.prenom = prenom,
-        this.force = force,
-        this.defense = defense,
-        this.pointDeVie = pointDeVie,
-        this.sacDePotions = sacDePotions,
+        this.nom = nom;
+        this.prenom = prenom;
+        this.force = this.random(3, 10);
+        this.defense = this.random(1, 5);
+        this.pointDeVie = pointDeVie;
+        this.sacDePotions = sacDePotions;
         this.sacDArmes = sacDArmes;
-        this.init();
-    }
-
-    init() {
-        this.#force = this.random(3, 10);
-        this.#defense = this.random(1, 5);
     }
 
     random(min, max) {
@@ -143,7 +137,7 @@ export class Hero {
     }
 
     usePotion(potion) {
-        if(this.#sacDePotions != 0){
+        if(this.#sacDePotions != 0) {
             if(this.#sacDePotions.includes(potion)) {
                 if(this.#pointDeVie != Hero.maxPointDeVie) {
                     let index = this.sacDePotions.indexOf("Potion de soin");
@@ -153,9 +147,9 @@ export class Hero {
                     } else {
                         this.#pointDeVie = Hero.maxPointDeVie;
                     }
-                    return "Vous avez consommé une potion de soin."
+                    return "Vous avez consommé une potion de soin.";
                 } else return "Votre vie est déjà pleine.";
-            } else return "Vous n'avez aucune potion de soin."
-        } else  return "Vous n'avez aucune potion."
+            } else return "Vous n'avez aucune potion de soin.";
+        } else  return "Vous n'avez aucune potion.";
     }
 }

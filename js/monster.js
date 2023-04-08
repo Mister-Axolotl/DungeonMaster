@@ -3,15 +3,15 @@ export class Monster {
     #degats;
     #defense;
     #pointDeVie;
-    #images;
+    #image;
     #target;
 
-    constructor(nom, degats, defense, pointDeVie, images, target) {
+    constructor(nom, degats, defense, pointDeVie, image, target) {
         this.nom = nom;
         this.degats = degats;
         this.defense = defense;
         this.pointDeVie = pointDeVie;
-        this.images = images;
+        this.image = image;
         this.target = target;
     }
 
@@ -47,12 +47,12 @@ export class Monster {
         this.#pointDeVie = value;
     }
 
-    get images() {
-        return this.#images;
+    get image() {
+        return this.#image;
     }
 
-    set images(value) {
-        this.#images = value;
+    set image(value) {
+        this.#image = value;
     }
 
     get target() {
