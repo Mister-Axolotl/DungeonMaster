@@ -1,4 +1,4 @@
-export class Monstre {
+export class Monster {
     #nom;
     #degats;
     #defense;
@@ -7,12 +7,12 @@ export class Monstre {
     #target;
 
     constructor(nom, degats, defense, pointDeVie, images, target) {
-        this.#nom = nom;
-        this.#degats = degats;
-        this.#defense = defense;
-        this.#pointDeVie = pointDeVie;
-        this.#images = images;
-        this.#target = target;
+        this.nom = nom;
+        this.degats = degats;
+        this.defense = defense;
+        this.pointDeVie = pointDeVie;
+        this.images = images;
+        this.target = target;
     }
 
     get nom() {
@@ -65,10 +65,21 @@ export class Monstre {
 
     attack(target) {
         while(target.pointDeVie > 0) {
-            target.pointDeVie -= this.#degats - target.defense;
-            console.log(target.pointDeVie);
+            target.pointDeVie -= this.degats - target.defense;
         }
         if(target.pointDeVie == 0) return true;
         else return false;
+    }
+
+    ajouter() {
+
+    }
+
+    suppression() {
+
+    }
+
+    loot() {
+
     }
 }
