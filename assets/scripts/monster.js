@@ -64,22 +64,22 @@ export class Monster {
     }
 
     attack(target) {
-        while(target.pointDeVie > 0) {
-            target.pointDeVie -= this.degats - target.defense;
+        if (target.pointDeVie > 0) {
+            target.pointDeVie -= this.#degats - target.defense;
         }
-        if(target.pointDeVie == 0) return true;
+        if (target.pointDeVie <= 0) return true;
         else return false;
     }
 
-    ajouter() {
+    addToDom() {
 
     }
 
-    suppression() {
+    removeFromDom() {
 
     }
 
-    loot() {
+    leaveReward() {
 
     }
 }

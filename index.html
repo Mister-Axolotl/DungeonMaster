@@ -1,18 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeon Master</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <script type="module" src="./js/main.js"></script>
+    <link rel="stylesheet" href="assets/style/style.css">
+    <title>Games</title>
+    <script type="module" src="assets/scripts/game.js"></script>
 </head>
-    <body>
-        <div id="images">
-            <img src="" alt="spider" id="testSpider"> <!-- temporaire -->
-            <img src="" alt="skeleton" id="testSkeleton"> <!-- temporaire -->
-            <img src="" alt="boss" id="testBoss"> <!-- temporaire -->
+
+<body>
+    <div class="container">
+        <h1>Dungeon Master</h1>
+        <h2 id="step"></h2>
+        <div id="pvHero">
+            <div></div>
         </div>
-    </body>
+        <div id="background">
+            <img id="hero" src="assets/images/hero.png" alt="">
+            <div id="pvMonster">
+                <div></div>
+            </div>
+        </div>
+        <div id="action">
+            <button id="btnAttack">Attaque</button>
+            <button id="btnUtiliser">Utiliser</button>
+            <button id="btnNext">Suivant</button>
+        </div>
+        <div id="bag">
+            Equipement:
+            <div id="equipement">
+            </div>
+            Potions:
+            <div id="potions">
+            </div>
+        </div>
+    </div>
+    <div id="lose">
+        you lose ! <br>
+        <a href="javascript:location.reload(true)">Recommencer</a>
+    </div>
+</body>
+
 </html>

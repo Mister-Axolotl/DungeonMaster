@@ -4,7 +4,7 @@
 }
 
 body {
-    background: radial-gradient(circle, rgba(0,85,254,1) 0%, rgba(48,73,130,1) 73%);
+    background: radial-gradient(circle, rgba(0, 85, 254, 1) 0%, rgba(48, 73, 130, 1) 73%);
     text-align: center;
 }
 
@@ -17,4 +17,8 @@ body {
 #images img {
     max-width: 100%;
     height: auto;
+}
+
+button:hover {
+    cursor: pointer;
 }

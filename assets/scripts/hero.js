@@ -82,8 +82,8 @@ export class Hero {
     }
 
     set sacDePotions(value) {
-        if(Array.isArray(value)) {
-            if(value.length >= 0 && value.length <= 10) {
+        if (Array.isArray(value)) {
+            if (value.length >= 0 && value.length <= 10) {
                 this.#sacDePotions = value;
             } else {
                 console.log("Argument invalide, l'array doit être compris entre 0 et 10.");
@@ -98,11 +98,11 @@ export class Hero {
     }
 
     set sacDArmes(value) {
-        if(Array.isArray(value)) {
-            if(value.length >= 0 && value.length <= 4) {
+        if (Array.isArray(value)) {
+            if (value.length >= 0 && value.length <= 4) {
                 this.#sacDArmes = value;
             } else {
-               console.log("Argument invalide, l'array doit être de compris entre 0 et 4.");
+                console.log("Argument invalide, l'array doit être de compris entre 0 et 4.");
             }
         } else {
             console.log("Argument invalide, le type doit etre un array.");
@@ -110,46 +110,62 @@ export class Hero {
     }
 
     attack(target) {
-        if(target.pointDeVie > 0) {
-            target.pointDeVie -= this.#degats - target.defense;
+        if (target.pointDeVie > 0) {
+            target.pointDeVie -= (this.#degats * this.#force) - target.defense;
         }
-        if(target.pointDeVie == 0) return true;
+        if (target.pointDeVie <= 0) return true;
         else return false;
     }
 
-    takeStuff(item, type) {
-        if(type == "potion") {
-            if(this.#sacDePotions.length <= 10) {
-                this.#sacDePotions.push(item);
-                return `Une ${item} a été ajouté à votre inventaire.`
+    takeStuff(item) {
+        if (item == "potion") {
+            if (this.#sacDePotions.length <= 10) {
+                this.#sacDePotions.push("Potion de soin");
+                console.log(`Une potion de soin a été ajouté à votre inventaire.`);
+                return true;
             } else {
-                return "Sac à potions plein."
+                console.log("Sac à potions plein.");
+                return false;
             }
-        } else if(type == "arme") {
-            if(this.#sacDArmes.length <= 4) {
+        } else if (item == "weapon") {
+            if (this.#sacDArmes.length <= 4) {
                 this.#sacDArmes.push(item);
                 this.#degats = this.#degats + 4;
-                return `Un(e) ${item} a été ajouté à votre inventaire.`
+                console.log(`Une arme a été ajouté à votre inventaire.`);
+                return true;
             } else {
-                return "Sac d'armes plein."
+                console.log("Sac d'armes plein.");
+                return false;
             }
+        } else if (item == "nothing") {
+            console.log("Rien n'a donner");
         }
     }
 
     usePotion(potion) {
-        if(this.#sacDePotions != 0) {
-            if(this.#sacDePotions.includes(potion)) {
-                if(this.#pointDeVie != Hero.maxPointDeVie) {
+        if (this.#sacDePotions != 0) {
+            if (this.#sacDePotions.includes(potion)) {
+                if (this.#pointDeVie != Hero.maxPointDeVie) {
                     let index = this.sacDePotions.indexOf("Potion de soin");
                     this.#sacDePotions.splice(index, 1);
-                    if(this.#pointDeVie <= (Hero.maxPointDeVie - 10)) {
+                    if (this.#pointDeVie <= (Hero.maxPointDeVie - 10)) {
                         this.#pointDeVie = this.#pointDeVie + 10;
                     } else {
                         this.#pointDeVie = Hero.maxPointDeVie;
                     }
-                    return "Vous avez consommé une potion de soin.";
-                } else return "Votre vie est déjà pleine.";
-            } else return "Vous n'avez aucune potion de soin.";
-        } else  return "Vous n'avez aucune potion.";
+                    console.log("Vous avez consommé une potion de soin.");
+                    return true;
+                } else {
+                    console.log("Votre vie est déjà pleine.");
+                    return false;
+                }
+            } else {
+                console.log("Vous n'avez aucune potion de soin.");
+                return false;
+            }
+        } else {
+            console.log("Vous n'avez aucune potion.");
+            return false;
+        }
     }
 }
