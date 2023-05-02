@@ -4,7 +4,7 @@ export class WitherBoss extends Monster {
 
     static linkToImg = "assets/images/";
     static variousColor;
-    static numberMax = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
+    static numberMax = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 
     _dom;
 
@@ -30,12 +30,11 @@ export class WitherBoss extends Monster {
 
     leaveReward() {
         if (WitherBoss.numberMax === 1) {
-            let potionOrWeapon = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
-            if (potionOrWeapon === 1) {
-                return "potion";
-            } else {
-                return "weapon";
-            }
-        } else return "potion and weapon";
+            return "potion";
+        } else if(WitherBoss.numberMax === 2){
+            return "weapon";
+        }else if (WitherBoss.numberMax ===3){
+            return "poiton", "weapon";
+        }
     }
 }

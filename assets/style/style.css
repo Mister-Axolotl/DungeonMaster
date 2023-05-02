@@ -1,4 +1,5 @@
 * {
+    font-family: Minecraftia;
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -21,4 +22,64 @@ body {
 
 button:hover {
     cursor: pointer;
+}
+
+#title {
+    font-size: 2vh;
+    color: white;
+    background-color: blue;
+    margin-left: 25%;
+    width: 50%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0.2vh 0.1vh #7e2690,
+        -0.1vh 0.3vh 0.1vh #601b6e,
+        -0.2vh 0.5vh 0.3vh #40104a;
+}
+
+#hero {
+    position: absolute;
+    left: 0;
+}
+
+#pvHero {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+#monster {
+    position: absolute;
+    right: 0;
+}
+
+#pvMonster {
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+#bag {
+    position: static;
+    bottom: 0;
+    left: 50%;
+}
+
+#lose {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(255, 0, 0, 0.5);
+    width: 80%;
+    height: 80%;
+}
+
+#lose>button {
+    display: block;
+    margin: 20px auto;
 }

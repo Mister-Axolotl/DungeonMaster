@@ -34,13 +34,7 @@ export class Spider extends Monster {
 
     leaveReward() {
         if (Spider.numberMax === 1) {
-            let potionOrWeapon = Math.floor(Math.random() * (this.numberMax - 1 + 1)) + 1;
-            console.log(potionOrWeapon);
-            if (potionOrWeapon === 1) {
-                return "potion";
-            } else {
-                return "weapon";
-            }
+            return "potion";
         } else return "nothing";
     }
 }

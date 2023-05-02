@@ -4,7 +4,7 @@ export class Skeleton extends Monster {
 
     static linkToImg = "assets/images/";
     static variousColor;
-    static numberMax = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    static numberMax = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
 
     _dom;
 
@@ -30,12 +30,9 @@ export class Skeleton extends Monster {
 
     leaveReward() {
         if (Skeleton.numberMax === 1) {
-            let potionOrWeapon = Math.floor(Math.random() * (2 - 1 + 1)) + 1;
-            if (potionOrWeapon === 1) {
-                return "potion";
-            } else {
-                return "weapon";
-            }
-        } else return "nothing";
+            return "potion";
+        } else if(Skeleton.numberMax === 2){
+            return "weapon";
+        } return "nothing";
     }
 }

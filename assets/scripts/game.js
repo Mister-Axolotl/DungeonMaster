@@ -4,10 +4,14 @@ import { Hero } from "./hero.js";
 import { Spider } from "./spider.js";
 import { Skeleton } from "./skeleton.js";
 import { WitherBoss } from "./witherBoss.js";
+import { playAudio } from "./functions.js";
 
 const attackButton = document.querySelector("#btnAttack");
 const useButton = document.querySelector("#btnUtiliser");
 const nextButton = document.querySelector("#btnNext");
+const loseScreen = document.querySelector("#lose");
+const divHero = document.querySelector("#hero");
+const bag = document.querySelector("#bag");
 const equipementInventory = document.querySelector("#equipement");
 const potionsInventory = document.querySelector("#potions");
 
@@ -19,16 +23,20 @@ function startGame(floor = 0) {
     nextFloor();
 
     attackButton.addEventListener("click", () => {
+        playAudio();
         if(hero.attack(monster) === true) {
             nextButton.style.display = 'initial';
             attackButton.style.display = 'none';
             monster.removeFromDom();
             hero.takeStuff(monster.leaveReward());
         }
-        if(monster.attack(hero) === true) {
+        if (monster.attack(hero) === true) {
             attackButton.style.display = 'none';
             useButton.style.display = 'none';
             nextButton.style.display = 'none';
+            bag.style.display = 'none';
+            loseScreen.style.display = 'initial';
+            divHero.src = "assets/images/hero_dead.png";
             console.log("Vous êtes resté en vie jusqu'à l'étage n°" + floor);
         }
     });
@@ -60,8 +68,14 @@ function startGame(floor = 0) {
             potionsInventory.innerHTML = '';
             for (let i = 0; i < hero.sacDePotions.length; i++) {
                 const potion = document.createElement('img');
-                potion.src = "assets/images/potions.png";
+                potion.src = "assets/images/potion.png";
                 potionsInventory.appendChild(potion);
+            }
+            equipementInventory.innerHTML = '';
+            for (let i = 0; i < hero.sacDArmes.length; i++) {
+                const weapon = document.createElement('img');
+                weapon.src = "assets/images/axe.png";
+                equipementInventory.appendChild(weapon);
             }
         }
 
