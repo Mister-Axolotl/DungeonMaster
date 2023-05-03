@@ -4,7 +4,8 @@ export class WitherBoss extends Monster {
 
     static linkToImg = "assets/images/";
     static variousColor;
-    static numberMax = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    static numberMax = 3;
+    static maxPointDeVie = 100;
 
     _dom;
 
@@ -14,27 +15,31 @@ export class WitherBoss extends Monster {
     }
 
     get numberMax() {
-        return WitherBoss.numberMax;
+        return Math.floor(Math.random() * (WitherBoss.numberMax - 1 + 1)) + 1;
+    }
+
+    get maxPointDeVie() {
+        return WitherBoss.maxPointDeVie;
     }
 
     addToDom() {
         this._dom = document.createElement('img');
         this._dom.classList.add('tesBoss');
         this._dom.src = `${WitherBoss.linkToImg}${this.image}.png`;
-        document.querySelector(".container").appendChild(this._dom);
+        document.querySelector(".monsters").appendChild(this._dom);
     }
 
     removeFromDom() {
-        document.querySelector(".container").removeChild(this._dom);
+        document.querySelector(".monsters").removeChild(this._dom);
     }
 
     leaveReward() {
-        if (WitherBoss.numberMax === 1) {
+        if (this.numberMax === 1) {
             return "potion";
-        } else if(WitherBoss.numberMax === 2){
+        } else if (this.numberMax === 2) {
             return "weapon";
-        }else if (WitherBoss.numberMax ===3){
-            return "poiton", "weapon";
+        } else if (this.numberMax === 3) {
+            return "potion&weapon";
         }
     }
 }

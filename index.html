@@ -14,52 +14,57 @@
 <body>
     <div class="container">
         <div id="title">
-            <h1>Dungeon Master <br>By Vincent & Grégory</h1>
+            <h1>Dungeon Master <br>By <br>Vincent & Grégory</h1>
         </div>
         <h2 id="step"></h2>
-        <div id="pvHero">
-            <div></div>
-        </div>
         <div id="background">
+            <div id="pvHero" class="health-bar">
+                <div id="hero-health-bar-progress" class="health-bar-progress"></div>
+                <div></div>
+            </div>
             <img id="hero" src="assets/images/hero.png" alt="">
-            <div id="pvMonster">
+            <div class="monsters"></div>
+            <div id="pvMonster" class="health-bar">
+                <div id="monster-health-bar-progress" class="health-bar-progress"></div>
                 <div></div>
             </div>
         </div>
-        <div id="action">
-            <button id="btnAttack" class="button-82-pushable" role="button">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
-                    Attaque
-                </span>
-            </button>
-            <button id="btnUtiliser" class="button-82-pushable" role="button">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
-                    Utiliser
-                </span>
-            </button>
-            <button id="btnNext" class="button-82-pushable" role="button">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text">
-                    Suivant
-                </span>
-            </button>
-        </div>
-    </div>
-    <div id="bag">
-        Equipement:
-        <div id="equipement">
-        </div>
-        Potions:
-        <div id="potions">
+        <div id="GUI">
+            <div id="action">
+                <button id="btnAttack" class="button-82-pushable" role="button">
+                    <span class="button-82-shadow"></span>
+                    <span class="button-82-edge"></span>
+                    <span class="button-82-front text">
+                        Attaque
+                    </span>
+                </button>
+                <button id="btnUtiliser" class="button-82-pushable" role="button">
+                    <span class="button-82-shadow"></span>
+                    <span class="button-82-edge"></span>
+                    <span class="button-82-front text">
+                        Utiliser
+                    </span>
+                </button>
+                <button id="btnNext" class="button-82-pushable" role="button">
+                    <span class="button-82-shadow"></span>
+                    <span class="button-82-edge"></span>
+                    <span class="button-82-front text">
+                        Suivant
+                    </span>
+                </button>
+                <div id="bag">
+                    Equipement:
+                    <div id="equipement">
+                    </div>
+                    Potions:
+                    <div id="potions">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="lose" style="display: none;">
-        you lose ! <br>
+        Game Over ! <br>
         <button id="btnNext" class="button-82-pushable" role="button" onClick="window.location.reload()">
             <span class="button-82-shadow"></span>
             <span class="button-82-edge"></span>

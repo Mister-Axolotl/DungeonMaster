@@ -7,6 +7,69 @@
 body {
     background: radial-gradient(circle, rgba(0, 85, 254, 1) 0%, rgba(48, 73, 130, 1) 73%);
     text-align: center;
+    max-height: 100%;
+}
+
+.container {
+    border-radius: 50px;
+}
+
+#background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25vh;
+}
+
+.health-bar {
+    width: 14vh;
+    height: 56vh;
+    border: 1px solid rgb(0, 195, 255);
+    background-color: #000000;
+    border-radius: 15px;
+}
+
+#hero-health-bar-progress, #monster-health-bar-progress {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+    border-radius: 15px;
+}
+
+.health-bar-progress {
+    background-color: rgb(1, 218, 1);
+}
+
+.health-bar-progress-yellow {
+    background-color: yellow;
+}
+
+.health-bar-progress-orange {
+    background-color: orange;
+}
+
+.health-bar-progress-red {
+    background-color: red;
+}
+
+#background>img,
+#background>div>img {
+    width: 40vh;
+}
+
+#GUI {
+    margin-top: 5vh;
+    background-color: #cf41eb;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#action {
+    margin-top: 10px;
+}
+
+#bag>div>img {
+    width: 10vh;
 }
 
 #images {
@@ -25,7 +88,7 @@ button:hover {
 }
 
 #title {
-    font-size: 2vh;
+    font-size: 1.5vh;
     color: white;
     background-color: blue;
     margin-left: 25%;
@@ -38,28 +101,6 @@ button:hover {
     text-shadow: 0 0.2vh 0.1vh #7e2690,
         -0.1vh 0.3vh 0.1vh #601b6e,
         -0.2vh 0.5vh 0.3vh #40104a;
-}
-
-#hero {
-    position: absolute;
-    left: 0;
-}
-
-#pvHero {
-    position: absolute;
-    top: 0;
-    right: 20px;
-}
-
-#monster {
-    position: absolute;
-    right: 0;
-}
-
-#pvMonster {
-    position: absolute;
-    top: 0;
-    left: 20px;
 }
 
 #bag {

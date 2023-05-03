@@ -53,7 +53,6 @@ export class Hero {
     }
 
     get degats() {
-        console.log("degats = ", this.#degats, "force = ", this.#force);
         return this.#degats * this.#force;
     }
 
@@ -75,6 +74,10 @@ export class Hero {
 
     set pointDeVie(value) {
         this.#pointDeVie = value;
+    }
+
+    get maxPointDeVie() {
+        return Hero.maxPointDeVie;
     }
 
     get sacDePotions() {
@@ -128,13 +131,22 @@ export class Hero {
                 return false;
             }
         } else if (item == "weapon") {
-            if (this.#sacDArmes.length <= 4) {
+            if (this.#sacDArmes.length < 4) {
                 this.#sacDArmes.push(item);
                 this.#degats = this.#degats + 4;
                 console.log(`Une arme a été ajouté à votre inventaire.`);
                 return true;
             } else {
                 console.log("Sac d'armes plein.");
+                return false;
+            }
+        } else if (item == "potion&weapon") {
+            if (this.#sacDePotions.length <= 10) {
+                this.#sacDePotions.push("Potion de soin");
+                console.log(`Une potion de soin a été ajouté à votre inventaire.`);
+                return true;
+            } else {
+                console.log("Sac à potions plein.");
                 return false;
             }
         } else if (item == "nothing") {

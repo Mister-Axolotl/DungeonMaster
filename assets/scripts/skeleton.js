@@ -4,7 +4,8 @@ export class Skeleton extends Monster {
 
     static linkToImg = "assets/images/";
     static variousColor;
-    static numberMax = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+    static numberMax = 4;
+    static maxPointDeVie = 50;
 
     _dom;
 
@@ -14,24 +15,28 @@ export class Skeleton extends Monster {
     }
 
     get numberMax() {
-        return Skeleton.numberMax;
+        return Math.floor(Math.random() * (Skeleton.numberMax - 1 + 1)) + 1;
+    }
+
+    get maxPointDeVie() {
+        return Skeleton.maxPointDeVie;
     }
 
     addToDom() {
         this._dom = document.createElement('img');
         this._dom.classList.add('skeleton');
         this._dom.src = `${Skeleton.linkToImg}${this.image}.png`;
-        document.querySelector(".container").appendChild(this._dom);
+        document.querySelector(".monsters").appendChild(this._dom);
     }
 
     removeFromDom() {
-        document.querySelector(".container").removeChild(this._dom);
+        document.querySelector(".monsters").removeChild(this._dom);
     }
 
     leaveReward() {
-        if (Skeleton.numberMax === 1) {
+        if (this.numberMax === 1) {
             return "potion";
-        } else if(Skeleton.numberMax === 2){
+        } else if(this.numberMax === 2){
             return "weapon";
         } return "nothing";
     }

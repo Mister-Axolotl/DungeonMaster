@@ -7,7 +7,8 @@ export class Spider extends Monster {
         { "spider": "Blue" },
         { "spider": "Green" }
     ];
-    static numberMax = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+    static numberMax = 3;
+    static maxPointDeVie = 25;
 
     _dom;
 
@@ -17,7 +18,11 @@ export class Spider extends Monster {
     }
 
     get numberMax() {
-        return Spider.numberMax;
+        return Math.floor(Math.random() * (Spider.numberMax - 1 + 1)) + 1;
+    }
+
+    get maxPointDeVie() {
+        return Spider.maxPointDeVie;
     }
 
     addToDom() {
@@ -25,15 +30,15 @@ export class Spider extends Monster {
         this._dom.classList.add('spider');
         let randomColor = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
         this._dom.src = `${Spider.linkToImg}${this.image}${Spider.variousColor[randomColor - 1].spider}.png`;
-        document.querySelector(".container").appendChild(this._dom);
+        document.querySelector(".monsters").appendChild(this._dom);
     }
 
     removeFromDom() {
-        document.querySelector(".container").removeChild(this._dom);
+        document.querySelector(".monsters").removeChild(this._dom);
     }
 
     leaveReward() {
-        if (Spider.numberMax === 1) {
+        if (this.numberMax === 1) {
             return "potion";
         } else return "nothing";
     }
