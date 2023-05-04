@@ -43,6 +43,9 @@ export function refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHe
     //monstre
     if (monster.pointDeVie > (monster.maxPointDeVie - (monster.maxPointDeVie / 4))) {
         monsterHealthBarProgress.classList.remove("health-bar-progress-yellow");
+        monsterHealthBarProgress.classList.remove("health-bar-progress-orange");
+        monsterHealthBarProgress.classList.remove("health-bar-progress-red");
+        monsterHealthBarProgress.classList.remove("health-bar-progress-black");
         monsterHealthBarProgress.classList.add("health-bar-progress");
     } else if ((monster.pointDeVie < (monster.maxPointDeVie - (monster.maxPointDeVie / 4)) && (monster.pointDeVie > (monster.maxPointDeVie / 2)))) {
         monsterHealthBarProgress.classList.remove("health-bar-progress");
