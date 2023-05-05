@@ -6,77 +6,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style/style.css">
-    <link rel="stylesheet" href="assets/style/button.css">
     <link rel="stylesheet" href="assets/style/minecraft.css">
+    <link rel="stylesheet" href="assets/style/button.css">
     <title>Games</title>
 </head>
 
 <body>
-    <div class="container">
+    <div id="container">
         <div id="title">
-            <h1>Dungeon Master <br>By <br>Vincent & Grégory</h1>
+            <text id="textTitle">Dungeon Master By Vincent & Grégory</text>
         </div>
-        <h2 id="step"></h2>
+        
+        <div id="pvHero" class="health-bar">
+            <div>
+                <div id="hero-health-bar-progress" class="health-bar-progress"></div>
+            </div>
+        </div>
+        
         <div id="background">
-            <div id="pvHero" class="health-bar">
-                <div>
-                    <div id="hero-health-bar-progress" class="health-bar-progress"></div>
-                </div>
-            </div>
-            <img id="hero" src="assets/images/hero.png" alt="">
-            <div class="monsters"></div>
-            <div id="pvMonster" class="health-bar">
-                <div>
-                    <div id="monster-health-bar-progress" class="health-bar-progress"></div>
-                </div>
+            <h2 id="step">Etage n°<text id="floor">1</text></h2>
+            <div id="entities">
+                <img id="hero" src="assets/images/hero.png" alt="hero">
+                <div class="monsters"></div>
             </div>
         </div>
-        <div id="GUI">
-            <div id="action">
-                <button id="btnAttack" class="button-82-pushable" role="button">
-                    <span class="button-82-shadow"></span>
-                    <span class="button-82-edge"></span>
-                    <span class="button-82-front text">
-                        Attaque
-                    </span>
-                </button>
-                <button id="btnUtiliser" class="button-82-pushable" role="button">
-                    <span class="button-82-shadow"></span>
-                    <span class="button-82-edge"></span>
-                    <span class="button-82-front text">
-                        Utiliser
-                    </span>
-                </button>
-                <button id="btnNext" class="button-82-pushable" role="button">
-                    <span class="button-82-shadow"></span>
-                    <span class="button-82-edge"></span>
-                    <span class="button-82-front text">
-                        Suivant
-                    </span>
-                </button>
-                <div id="bag">
-                    Equipement:
-                    <div id="equipement">
-                    </div>
-                    Potions:
-                    <div id="potions">
-                    </div>
-                </div>
+
+        <div id="pvMonster" class="health-bar">
+            <div>
+                <div id="monster-health-bar-progress" class="health-bar-progress"></div>
+            </div>
+        </div>
+
+        <div id="action">
+            <button id="btnAttack" class="button-82-pushable" role="button">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    Attaque
+                </span>
+            </button>
+            <button id="btnUtiliser" class="button-82-pushable" role="button">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    Utiliser
+                </span>
+            </button>
+            <button id="btnNext" class="button-82-pushable" role="button">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text">
+                    Suivant
+                </span>
+            </button>
+        </div>
+
+        <div id="bag">
+            <div id="equipement">
+                <label for="equipement">Equipement :</label>
+                <div id="equipementValue"></div>
+            </div>
+            
+            <div id="potions">
+                <label for="potions">Potions :</label>
+                <div id="potionsValue"></div>
             </div>
         </div>
     </div>
-    <div id="lose" style="display: none;">
-        Game Over ! <br>
-        <button id="btnNext" class="button-82-pushable" role="button" onClick="window.location.reload()">
-            <span class="button-82-shadow"></span>
-            <span class="button-82-edge"></span>
-            <span class="button-82-front text">
-                Recommencer
-            </span>
-        </button>
-    </div>
+    <!-- <div id="lose">
+        you lose ! <br>
+        <a href="javascript:location.reload(true)">Recommencer</a>
+    </div> -->
     <script type="module" src="assets/scripts/game.js"></script>
-    <script type="module" src="assets/scripts/functions.js"></script>
 </body>
 
 </html>

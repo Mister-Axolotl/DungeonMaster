@@ -5,140 +5,90 @@
 }
 
 body {
-    background: radial-gradient(circle, rgba(0, 85, 254, 1) 0%, rgba(48, 73, 130, 1) 73%);
+    margin: 0;
+    padding: 0;
     text-align: center;
-    max-height: 100%;
 }
 
-.container {
-    border-radius: 50px;
+#container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#title {
+    background-color: #6247aa;
+    color: white;
+    font-size: 3vh;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#textTitle {
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(255, 0, 0, 1) 0%, rgba(255, 124, 0, 1) 100%);
+    width: 90vh;
+    height: 6vh;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#step {
+    color: rgb(4, 243, 243);
+    background-color: #01f50a3d;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 3px solid #01f5096e;
+    margin: auto;
+    width: 25vh;
+    font-size: 3vh;
 }
 
 #background {
+    background-color: #9163cb;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+#entities {
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25vh;
 }
 
-.health-bar > div {
-    width: 14vh;
-    height: 56vh;
-    border: 1px solid rgb(0, 195, 255);
-    background-color: #000000;
-    border-radius: 15px;
-}
-
-#hero-health-bar-progress, #monster-health-bar-progress {
-    height: 100%;
-    width: 100%;
-    transition: width 0.3s ease-in-out;
-    border-radius: 15px;
-}
-
-#pvHero {
-    position: sticky;
-    bottom: 20px;
-    left: 20px;
-    margin-left: -500px;
-}
-
-#pvMonster {
-    position: sticky;
-    bottom: 20px;
-    right: 20px;
-    margin-right: -500px;
-}
-
-.health-bar-progress {
-    background-color: rgb(1, 218, 1);
-}
-
-.health-bar-progress-yellow {
-    background-color: yellow;
-}
-
-.health-bar-progress-orange {
-    background-color: orange;
-}
-
-.health-bar-progress-red {
-    background-color: red;
-}
-
-.health-bar-progress-black {
-    background-color: black;
-}
-
-#background>img,
-#background>div>img {
-    width: 40vh;
-}
-
-#GUI {
-    margin-top: 5vh;
-    background-color: #cf41eb;
-    border-radius: 50px;
-    text-align: center;
-}
-
 #action {
-    margin-top: 10px;
-}
-
-#bag>div>img {
-    width: 10vh;
-}
-
-#images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-}
-
-#images img {
-    max-width: 100%;
-    height: auto;
-}
-
-button:hover {
-    cursor: pointer;
-}
-
-#title {
-    font-size: 1.5vh;
-    color: white;
-    background-color: blue;
-    margin-left: 25%;
-    width: 50%;
-    height: 100%;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-shadow: 0 0.2vh 0.1vh #7e2690,
-        -0.1vh 0.3vh 0.1vh #601b6e,
-        -0.2vh 0.5vh 0.3vh #40104a;
+    background-color: #9163cb;
+    height: 12.5vh;
 }
 
 #bag {
-    position: static;
-    bottom: 0;
-    left: 50%;
+    display: flex;
+    justify-content: space-between;
 }
 
-#lose {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    background-color: rgba(255, 0, 0, 0.5);
-    width: 80%;
-    height: 80%;
+#equipement {
+    display: flex;
+    align-items: center;
 }
 
-#lose>button {
-    display: block;
-    margin: 20px auto;
+#potions {
+    display: flex;
+    align-items: center;
+}
+
+#equipement label,
+#potions label {
+    margin-right: 1em;
+}
+
+#hero,
+.monsters>img {
+    height: 50vh;
 }

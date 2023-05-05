@@ -10,13 +10,14 @@ const attackButton = document.querySelector("#btnAttack");
 const useButton = document.querySelector("#btnUtiliser");
 const nextButton = document.querySelector("#btnNext");
 const divBackground = document.querySelector("#background");
+let floorValue = document.querySelector("#floor");
 const loseScreen = document.querySelector("#lose");
 const divHero = document.querySelector("#hero");
 const bag = document.querySelector("#bag");
 const heroHealthBarProgress = document.querySelector('#hero-health-bar-progress');
 const monsterHealthBarProgress = document.querySelector('#monster-health-bar-progress');
-const equipementInventory = document.querySelector("#equipement");
-const potionsInventory = document.querySelector("#potions");
+const equipementInventory = document.querySelector("#equipementValue");
+const potionsInventory = document.querySelector("#potionsValue");
 
 // ===== Code =====
 
@@ -49,7 +50,6 @@ function startGame(floor = 0) {
                 bag.style.display = 'none';
                 loseScreen.style.display = 'initial';
                 divHero.src = "assets/images/hero_dead.png";
-                console.log("Vous êtes resté en vie jusqu'à l'étage n°" + floor);
             } else { // si on ne meurt pas
                 console.log(monster.pointDeVie + " et " + hero.pointDeVie);
             }
@@ -77,6 +77,7 @@ function startGame(floor = 0) {
 
     function nextFloor() {
         floor++;
+        floorValue.innerHTML = floor;
         divBackground.style.gap = "25vh";
         divHero.src = "assets/images/hero.png";
         attackButton.style.display = 'initial';
