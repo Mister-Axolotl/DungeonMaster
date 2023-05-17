@@ -1,0 +1,48 @@
+.health-bar > div {
+    width: 14vh;
+    height: 56vh;
+    border: 1px solid rgb(0, 195, 255);
+    background-color: #000000;
+    border-radius: 15px;
+}
+
+#hero-health-bar-progress, #monster-health-bar-progress {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+    border-radius: 15px;
+}
+
+#pvHero {
+    position: sticky;
+    bottom: 20px;
+    left: 20px;
+    margin-left: -500px;
+}
+
+#pvMonster {
+    position: sticky;
+    bottom: 20px;
+    right: 20px;
+    margin-right: -500px;
+}
+
+.health-bar-progress {
+    background-color: rgb(1, 218, 1);
+}
+
+.health-bar-progress-yellow {
+    background-color: yellow;
+}
+
+.health-bar-progress-orange {
+    background-color: orange;
+}
+
+.health-bar-progress-red {
+    background-color: red;
+}
+
+.health-bar-progress-black {
+    background-color: black;
+}

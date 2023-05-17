@@ -122,7 +122,7 @@ export class Hero {
 
     takeStuff(item) {
         if (item == "potion") {
-            if (this.#sacDePotions.length <= 10) {
+            if (this.#sacDePotions.length < 10) {
                 this.#sacDePotions.push("Potion de soin");
                 console.log(`Une potion de soin a été ajouté à votre inventaire.`);
                 return true;

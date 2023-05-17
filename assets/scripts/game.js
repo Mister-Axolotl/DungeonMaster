@@ -50,6 +50,7 @@ function startGame(floor = 0) {
                 bag.style.display = 'none';
                 loseScreen.style.display = 'initial';
                 divHero.src = "assets/images/hero_dead.png";
+                divHero.style.height = "25vh";
             } else { // si on ne meurt pas
                 console.log(monster.pointDeVie + " et " + hero.pointDeVie);
             }
