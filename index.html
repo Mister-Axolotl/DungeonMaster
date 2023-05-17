@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="assets/style/health-bar.css">
     <link rel="stylesheet" href="assets/style/minecraft.css">
     <link rel="stylesheet" href="assets/style/button.css">
     <title>Games</title>
@@ -13,29 +14,30 @@
 
 <body>
     <div id="container">
+        <audio id="myAudio" src="./assets/audio/click.mp3"></audio>
         <div id="title">
             <text id="textTitle">Dungeon Master By Vincent & Grégory</text>
         </div>
-        
-        <div id="pvHero" class="health-bar">
-            <div>
-                <div id="hero-health-bar-progress" class="health-bar-progress"></div>
-            </div>
-        </div>
-        
+
+
         <div id="background">
             <h2 id="step">Etage n°<text id="floor">1</text></h2>
+            <div id="pvHero" class="health-bar">
+                <div>
+                    <div id="hero-health-bar-progress" class="health-bar-progress"></div>
+                </div>
+            </div>
+            <div id="pvMonster" class="health-bar">
+                <div>
+                    <div id="monster-health-bar-progress" class="health-bar-progress"></div>
+                </div>
+            </div>
             <div id="entities">
                 <img id="hero" src="assets/images/hero.png" alt="hero">
                 <div class="monsters"></div>
             </div>
         </div>
 
-        <div id="pvMonster" class="health-bar">
-            <div>
-                <div id="monster-health-bar-progress" class="health-bar-progress"></div>
-            </div>
-        </div>
 
         <div id="action">
             <button id="btnAttack" class="button-82-pushable" role="button">
@@ -62,20 +64,29 @@
         </div>
 
         <div id="bag">
-            <div id="equipement">
-                <label for="equipement">Equipement :</label>
-                <div id="equipementValue"></div>
-            </div>
-            
-            <div id="potions">
-                <label for="potions">Potions :</label>
-                <div id="potionsValue"></div>
+            <p class="inventory-title">Inventory</p>
+            <div class="inventory-container">
+                <div id="equipement">
+                    <label for="equipement">Equipement:</label>
+                    <div id="equipementValue"></div>
+                </div>
+                <div id="potions">
+                    <label for="potions">Potions:</label>
+                    <div id="potionsValue"></div>
+                </div>
             </div>
         </div>
     </div>
     <div id="lose" style="display: none;">
-        you lose ! <br>
-        <a href="javascript:location.reload(true)">Recommencer</a>
+        <p>Game Over !</p>
+        <p id="deathFloor"></p>
+        <button id="btnUtiliser" class="button-82-pushable" role="button">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+                <a href="javascript:location.reload(true)">Recommencer</a>
+            </span>
+        </button>
     </div>
     <script type="module" src="assets/scripts/game.js"></script>
 </body>

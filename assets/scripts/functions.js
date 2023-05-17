@@ -1,6 +1,7 @@
 export function playAudio() {
-    const clickSound = new Audio('../audio/click.mp3');
-    clickSound.play();
+    const audioElement = document.getElementById("myAudio");
+    const clonedAudioElement = audioElement.cloneNode(true);
+    clonedAudioElement.play();
 }
 
 export function refreshInventory(hero, useButton, potionsInventory, equipementInventory) {

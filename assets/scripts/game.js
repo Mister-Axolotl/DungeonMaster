@@ -10,8 +10,9 @@ const attackButton = document.querySelector("#btnAttack");
 const useButton = document.querySelector("#btnUtiliser");
 const nextButton = document.querySelector("#btnNext");
 const divBackground = document.querySelector("#background");
-let floorValue = document.querySelector("#floor");
+const floorValue = document.querySelector("#floor");
 const loseScreen = document.querySelector("#lose");
+const textDeathFloor = document.querySelector("#deathFloor");
 const divHero = document.querySelector("#hero");
 const bag = document.querySelector("#bag");
 const heroHealthBarProgress = document.querySelector('#hero-health-bar-progress');
@@ -29,8 +30,7 @@ function startGame(floor = 0) {
     refreshInventory(hero, useButton, potionsInventory, equipementInventory);
 
     attackButton.addEventListener("click", () => {
-        console.log(hero.pointDeVie);
-        // playAudio();
+        playAudio();
         if (hero.attack(monster) === true) { // si le monstre est mort
             nextButton.style.display = 'initial';
             attackButton.style.display = 'none';
@@ -51,13 +51,13 @@ function startGame(floor = 0) {
                 loseScreen.style.display = 'initial';
                 divHero.src = "assets/images/hero_dead.png";
                 divHero.style.height = "25vh";
-            } else { // si on ne meurt pas
-                console.log(monster.pointDeVie + " et " + hero.pointDeVie);
+                textDeathFloor.innerHTML = `Mort à l'étage n°${floor}`;
             }
         }
     });
 
     useButton.addEventListener("click", () => {
+        playAudio();
         refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHealthBarProgress);
         if (hero.usePotion("Potion de soin")) {
             const images = potionsInventory.querySelectorAll("img");
@@ -73,6 +73,7 @@ function startGame(floor = 0) {
     });
 
     nextButton.addEventListener("click", () => {
+        playAudio();
         nextFloor();
     });
 
