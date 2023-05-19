@@ -9,7 +9,7 @@ import { playAudio, refreshInventory, refreshHealthBar } from "./functions.js";
 const attackButton = document.querySelector("#btnAttack");
 const useButton = document.querySelector("#btnUtiliser");
 const nextButton = document.querySelector("#btnNext");
-const divBackground = document.querySelector("#background");
+const divEntities = document.querySelector("#entities");
 const floorValue = document.querySelector("#floor");
 const loseScreen = document.querySelector("#lose");
 const textDeathFloor = document.querySelector("#deathFloor");
@@ -19,6 +19,11 @@ const heroHealthBarProgress = document.querySelector('#hero-health-bar-progress'
 const monsterHealthBarProgress = document.querySelector('#monster-health-bar-progress');
 const equipementInventory = document.querySelector("#equipementValue");
 const potionsInventory = document.querySelector("#potionsValue");
+
+let spiderDegat = 10;
+let skeletonDegat = 15;
+let witherBossDegat = 20;
+let tauxDaugmentation = 1.2;
 
 // ===== Code =====
 
@@ -34,7 +39,7 @@ function startGame(floor = 0) {
         if (hero.attack(monster) === true) { // si le monstre est mort
             nextButton.style.display = 'initial';
             attackButton.style.display = 'none';
-            // divBackground.style.gap = "0px";
+            divEntities.style.justifyContent = "center";
             divHero.src = "assets/images/hero_win.png";
             hero.takeStuff(monster.leaveReward());
             monster.removeFromDom();
@@ -42,8 +47,7 @@ function startGame(floor = 0) {
             refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHealthBarProgress);
             monsterHealthBarProgress.classList.add("health-bar-progress-black");
         } else { // si le monstre n'est pas mort
-            refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHealthBarProgress);
-            if (monster.attack(hero) === true) { // le monstre attaque et si on meurt ...
+            if (monster.attack(hero) === true) { // le monstre attaque et si on meurt
                 attackButton.style.display = 'none';
                 useButton.style.display = 'none';
                 nextButton.style.display = 'none';
@@ -53,6 +57,7 @@ function startGame(floor = 0) {
                 divHero.style.height = "25vh";
                 textDeathFloor.innerHTML = `Mort à l'étage n°${floor}`;
             }
+            refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHealthBarProgress);
         }
     });
 
@@ -80,17 +85,28 @@ function startGame(floor = 0) {
     function nextFloor() {
         floor++;
         floorValue.innerHTML = floor;
-        divBackground.style.gap = "25vh";
+        divEntities.style.justifyContent = "space-evenly";
         divHero.src = "assets/images/hero.png";
         attackButton.style.display = 'initial';
         nextButton.style.display = 'none';
-        
+
+        if (floor % 10 === 0) {
+            Spider.maxPointDeVie = Spider.maxPointDeVie * tauxDaugmentation;
+            Skeleton.maxPointDeVie = Skeleton.maxPointDeVie * tauxDaugmentation;
+            spiderDegat *= tauxDaugmentation;
+            skeletonDegat *= tauxDaugmentation;
+            if (floor > 10) {
+                WitherBoss.maxPointDeVie = WitherBoss.maxPointDeVie * tauxDaugmentation;
+                witherBossDegat *= tauxDaugmentation;
+            }
+        }
+
         if ((floor % 10 !== 0 && floor % 5 !== 0) || (floor % 10 === 0 && floor % 5 !== 0)) {
-            monster = new Spider("Speederman", 10, 1, Spider.maxPointDeVie, "spider", hero);
+            monster = new Spider("Speederman", spiderDegat, 1, Spider.maxPointDeVie, "spider", hero);
         } else if (floor % 10 === 5) {
-            monster = new Skeleton("Padchair", 15, 5, Skeleton.maxPointDeVie, "skeleton", hero);
+            monster = new Skeleton("Padchair", skeletonDegat, 5, Skeleton.maxPointDeVie, "skeleton", hero);
         } else {
-            monster = new WitherBoss("Siamoua", 20, 10, WitherBoss.maxPointDeVie, "witherBoss", hero);
+            monster = new WitherBoss("Siamoua", witherBossDegat, 10, WitherBoss.maxPointDeVie, "witherBoss", hero);
         }
         refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHealthBarProgress);
     }

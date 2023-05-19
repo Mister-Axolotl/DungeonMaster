@@ -8,7 +8,7 @@ export class Hero {
     #degats = Hero.degatsDeBase;
     #sacDArmes;
     static degatsDeBase = 3;
-    static minForce = 3;
+    static minForce = 1;
     static maxForce = 10;
     static minDef = 1;
     static maxDef = 4;

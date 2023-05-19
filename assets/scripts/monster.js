@@ -66,9 +66,12 @@ export class Monster {
     attack(target) {
         if (target.pointDeVie > 0) {
             target.pointDeVie -= this.#degats - target.defense;
+            return false;
         }
-        if (target.pointDeVie <= 0) return true;
-        else return false;
+        else if (target.pointDeVie <= 0) {
+            target.pointDeVie = 0;
+            return true;
+        }
     }
 
     addToDom() {

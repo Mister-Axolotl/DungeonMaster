@@ -25,7 +25,7 @@ export function refreshInventory(hero, useButton, potionsInventory, equipementIn
 }
 
 export function refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHealthBarProgress) {
-    //hero
+    // hero
     if (hero.pointDeVie > (hero.maxPointDeVie - (hero.maxPointDeVie / 4))) {
         heroHealthBarProgress.classList.remove("health-bar-progress-yellow");
         heroHealthBarProgress.classList.add("health-bar-progress");
@@ -41,7 +41,11 @@ export function refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHe
         heroHealthBarProgress.classList.remove("health-bar-progress-orange");
         heroHealthBarProgress.classList.add("health-bar-progress-red");
     }
-    //monstre
+    // actualise la progression de la barre de vie du héro
+    let pvRestantHero = (hero.pointDeVie / hero.maxPointDeVie) * 100;
+    heroHealthBarProgress.style.height = `${pvRestantHero}%`;
+
+    // monstre
     if (monster.pointDeVie > (monster.maxPointDeVie - (monster.maxPointDeVie / 4))) {
         monsterHealthBarProgress.classList.remove("health-bar-progress-yellow");
         monsterHealthBarProgress.classList.remove("health-bar-progress-orange");
@@ -60,4 +64,8 @@ export function refreshHealthBar(hero, heroHealthBarProgress, monster, monsterHe
         monsterHealthBarProgress.classList.remove("health-bar-progress-orange");
         monsterHealthBarProgress.classList.add("health-bar-progress-red");
     }
+    
+    // actualise la progression de la barre de vie du monstre
+    let pvRestantMonster = (monster.pointDeVie / monster.maxPointDeVie) * 100;
+    monsterHealthBarProgress.style.height = `${pvRestantMonster}%`;
 }
